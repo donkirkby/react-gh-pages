@@ -9,9 +9,4 @@ This is an experiment with hosting the Jekyll theme files with the source code.
 
 Check out the [other] page.
 
-* [other.md]
-* [other.html]
-
-[other]: other
-[other.md]: other.md
-[other.html]: other.html
+[other]: other.md
