@@ -7,6 +7,11 @@ This is an experiment with hosting the Jekyll theme files with the source code.
 * other
 * items
 
-Check out the [other page].
+Check out the [other] page.
 
-[other page]: other
+* [other.md]
+* [other.html]
+
+[other]: other
+[other.md]: other.md
+[other.html]: other.html
