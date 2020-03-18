@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - 11
+install:
+  - npm install
 script:
   - cd react-demo
   - npm test -- --watchAll=false
