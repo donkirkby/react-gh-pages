@@ -1,4 +1,6 @@
 language: node_js
 node_js:
   - 11
-script: npm test -- --watchAll=false
+script:
+  - cd react-demo
+  - npm test -- --watchAll=false
