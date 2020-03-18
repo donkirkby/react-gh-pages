@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - 11
 install:
+  - cd react-demo
   - npm install
 script:
   - cd react-demo
