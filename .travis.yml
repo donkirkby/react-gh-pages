@@ -5,5 +5,4 @@ install:
   - cd react-demo
   - npm install
 script:
-  - cd react-demo
   - npm test -- --watchAll=false
