@@ -11,6 +11,7 @@ This is an experiment with hosting the Jekyll theme files with the source code.
 * other
 * items
 
-Check out the [other] page.
+Check out the [other] page, or the [React demo].
 
 [other]: other.md
+[React demo]: react-demo
