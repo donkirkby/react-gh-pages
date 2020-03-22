@@ -1,9 +1,9 @@
 ---
-title: Bulma Test
+title: React and GitHub Pages
 callouts: index_callouts
 ---
 
-This is an experiment with hosting the Jekyll theme files with the source code.
+This is an experiment with hosting a React app on a GitHub Pages web site.
 
     Here's a code block!
 
