@@ -7,7 +7,7 @@ items:
 
       For example, such as this.
     call_to_action_name: Call to action 1
-    call_to_action_link: other.html
+    call_to_action_link: /other.html
   - title: Example callout 2
     subtitle: Example subtitle 2
     icon: fa-wrench
