@@ -6,13 +6,6 @@ updates:
     interval: daily
     time: "13:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: "@testing-library/user-event"
-    versions:
-    - 13.0.16
-  - dependency-name: eslint-plugin-flowtype
-    versions:
-    - 5.3.0
 - package-ecosystem: bundler
   directory: "/docs"
   schedule:
