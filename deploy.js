@@ -33,7 +33,7 @@ It has two paragraphs, and is deployed with a React app below.
 }
 
 function main() {
-    let dest = path.resolve('../docs/react-demo');
+    let dest = path.resolve('docs/react-demo');
     let src = path.resolve('build');
     let d = fs.opendirSync(dest);
     let entry;
