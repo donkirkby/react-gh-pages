@@ -56,6 +56,7 @@ function main() {
             copyIndex(srcFilePath, dest);
         }
     }
+    fs.renameSync(path.join(dest, 'favicon.ico'), path.join(dest, '../favicon.ico'));
 }
 
 main();
