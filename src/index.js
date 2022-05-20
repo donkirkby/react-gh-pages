@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import CodeBlockApp from './CodeBlockApp';
@@ -12,7 +12,9 @@ const components = {
 const SelectedComponent = components[window.reactAppName];
 
 if (SelectedComponent !== undefined) {
-    ReactDOM.render(<SelectedComponent />, document.getElementById('root'));
+    const container = document.getElementById('root');
+    const root = createRoot(container);
+    root.render(<SelectedComponent />);
 }
 
 // If you want your app to work offline and load faster, you can change
