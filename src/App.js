@@ -1,40 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-class Greeter extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            greeting: "Hello, World!"
-        };
+function Greeter(props) {
+    const [greeting, setGreeting] = useState("Hello, World!"),
+        [name, setName] = useState('');
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleGreet = this.handleGreet.bind(this);
+    function handleChange(event) {
+        setName(event.target.value);
     }
 
-    handleChange(event) {
-        this.setState({name: event.target.value});
-    }
-
-    handleGreet(event) {
-        this.setState(state => ({greeting: "Hello, " + state.name + "!"}));
+    function handleGreet(event) {
+        setGreeting("Hello, " + name + "!");
         event.preventDefault();
     }
 
-    render() {
-        return <div>
-            <form>
-                <label>
-                    Who are you?
-                    <input type="text" value={this.state.name} onChange={this.handleChange}/>
-                </label>
-                <button onClick={this.handleGreet}>
-                    Greet
-                </button>
-                <p>{this.state.greeting}</p>
-            </form>
-        </div>;
-    }
+    return <div>
+        <form>
+            <label>
+                Who are you?
+                <input type="text" value={name} onChange={handleChange}/>
+            </label>
+            <button onClick={handleGreet}>
+                Greet
+            </button>
+            <p>{greeting}</p>
+        </form>
+    </div>;
 }
 
 function App() {

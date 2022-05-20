@@ -1,3 +1,6 @@
-{% if page.is_react %}
-<link href="./static/css/main.5f361e03.chunk.css" rel="stylesheet">
+{% if page.react_app %}
+<script>
+window.reactAppName = '{{ page.react_app }}';
+</script>
+<script defer="defer" src="./static/js/main.67e8a53e.js"></script><link href="./static/css/main.073c9b0a.css" rel="stylesheet">
 {% endif %}

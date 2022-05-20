@@ -2,30 +2,21 @@ const fs = require('fs');
 const path = require('path');
 
 function wrapReact(source) {
-    return "{% if page.is_react %}\n" + source + "\n{% endif %}\n";
+    return "{% if page.react_app %}\n" + source + "\n{% endif %}\n";
 }
 
 function copyIndex(indexSrcPath, destFolderPath) {
-    const indexMarkdown = `\
----
-title: React Demo
-layout: react
-is_react: True
----
-
-This is the markdown content for the React demo.
-
-It has two paragraphs, and is deployed with a React app below.
-`;
     let indexSource = fs.readFileSync(indexSrcPath, 'utf8');
-    let destFilePath = path.join(destFolderPath, 'index.md');
     let includesPath = path.join(destFolderPath, '../_includes');
 
-    fs.writeFileSync(destFilePath, indexMarkdown);
-
-    let match = indexSource.match(/<link href=".*" rel="stylesheet">/);
-    destFilePath = path.join(includesPath, 'head-scripts.html');
-    fs.writeFileSync(destFilePath, wrapReact(match[0]));
+    let match = indexSource.match(/<script defer="defer".*" rel="stylesheet">/);
+    let destFilePath = path.join(includesPath, 'head-scripts.html');
+    const headerSource = `\
+<script>
+window.reactAppName = '{{ page.react_app }}';
+</script>
+${match[0]}`;
+    fs.writeFileSync(destFilePath, wrapReact(headerSource));
 
     match = indexSource.match(/<div id="root"><\/div>(.*)<\/body>/ms);
     destFilePath = path.join(includesPath, 'footer-scripts.html');
@@ -38,25 +29,33 @@ function main() {
     let d = fs.opendirSync(dest);
     let entry;
     while ((entry = d.readSync()) !== null) {
-        let destFilePath = path.join(dest, entry.name);
-        if (entry.isDirectory()) {
-            fs.rmdirSync(destFilePath, {recursive: true});
+        let destFilePath = path.join(dest, entry.name),
+            isUntouched = (
+                entry.name.startsWith('_') ||
+                entry.name.startsWith('Gemfile') ||
+                entry.name.endsWith('.md')
+            );
+        if (isUntouched) {
+            // Leave untouched.
+        }
+        else if (entry.isDirectory()) {
+            fs.rmSync(destFilePath, {recursive: true});
         }
         else {
             fs.unlinkSync(destFilePath);
         }
     }
-    d = fs.opendirSync(src);
-    while ((entry = d.readSync()) !== null) {
-        let srcFilePath = path.join(src, entry.name),
-            destFilePath = path.join(dest, entry.name);
-        if (entry.name !== 'index.html') {
+    const entries = fs.readdirSync(src);
+    entries.sort();  // Fails if we hit index.html before _includes.
+    for (entry of entries) {
+        let srcFilePath = path.join(src, entry),
+            destFilePath = path.join(dest, entry);
+        if (entry !== 'index.html') {
             fs.renameSync(srcFilePath, destFilePath);
         } else {
             copyIndex(srcFilePath, dest);
         }
     }
-    fs.renameSync(path.join(dest, 'favicon.ico'), path.join(dest, '../favicon.ico'));
 }
 
 main();
