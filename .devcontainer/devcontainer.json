@@ -17,7 +17,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cd docs && bundle install"
+	"postCreateCommand": "npm install --legacy-peer-deps && cd docs && bundle install"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

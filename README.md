@@ -1,11 +1,17 @@
 # react-gh-pages
 Demonstrate combining Jekyll content on GitHub Pages with a React app.
 
-Try testing Jekyll [locally]. After everything is installed, launch the server
-with this command:
+This project has a devcontainer configured for VSCode and GitHub codespaces.
+In the devcontainer terminal, there are main scripts to use that will let you
+test your changes [locally] before pushing a commit:
 
-    cd docs
-    bundle exec jekyll serve
+* `npm run build` - builds the React app and copies it into the `docs` folder.
+* `./serve.sh` - launches a Jekyll server on port 4000. It should also pop up
+  a dialog that will open a browser tab on that port.
+
+If you change markdown files, Jekyll will automatically rebuild them and you can
+just refresh your browser page. If you change Javascript files, stop the Jekyll
+server, build, and serve again, then refresh your browser page.
 
 [locally]: https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll
 
