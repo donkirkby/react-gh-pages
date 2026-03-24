@@ -10,7 +10,7 @@
     "eslint-plugin-flowtype": "^8.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.2.4",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
